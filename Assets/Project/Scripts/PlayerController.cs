@@ -1,11 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MyBox;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [MustBeAssigned]
+    public Vector3Variable playerPosition;
+    
     [Header("Player Stuff")]
     public float moveSpeed;
 
@@ -88,6 +93,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        playerPosition.Value = transform.position;
     }
 
     private Vector2 oldVel;
