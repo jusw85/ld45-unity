@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 //        if (isSpawning || isDying) return;
 
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Debug.Log(moveInput);
+//        Debug.Log(moveInput);
         if (moveInput.x != 0)
             SetIsFacingRight(moveInput.x > 0);
 

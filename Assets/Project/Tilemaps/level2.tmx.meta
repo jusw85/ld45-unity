@@ -10,8 +10,7 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 1fa25d03934ea624a82bf2fcee6f0873, type: 3}
   missingFiles: []
   errors: []
-  warnings:
-  - Pixels Per Unit mismatch between map (100) and tileset 'BoundsTilesheet.tsx' (64)
+  warnings: []
   missingSortingLayers: []
   missingLayers: []
   missingTags: []
@@ -22,5 +21,5 @@ ScriptedImporter:
   tilesAsObjects: 0
   sortingMode: 0
   isIsometric: 0
-  customImporterClassName: 
+  customImporterClassName: TiledImporter
   internalTilesets: []
