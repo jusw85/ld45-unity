@@ -14,13 +14,21 @@ public class TiledImporter : CustomTmxImporter
 //        AddSpikeController(prefab);
     }
 
+    private void DisableTilemapRenderer(Transform t)
+    {
+        if (t != null)
+        {
+            t.GetComponent<TilemapRenderer>().enabled = false;
+        }
+    }
+
     public override void TmxAssetImported(TmxAssetImportedArgs args)
     {
-//        Debug.Log("Applying import settings");
-//        var a = args.ImportedSuperMap;
-//        a.transform.Find("Grid/Solid").GetComponent<TilemapRenderer>().enabled = false;
-//        a.transform.Find("Grid/Spikes").GetComponent<TilemapRenderer>().enabled = false;
-//
+        Debug.Log("Applying import settings");
+        var a = args.ImportedSuperMap;
+        DisableTilemapRenderer(a.transform.Find("Grid/Solid"));
+        DisableTilemapRenderer(a.transform.Find("Grid/Spikes"));
+
 //        Transform transform = a.transform.Find("Grid/Spikes/Collision_Default");
 //        if (transform != null)
 //        {
