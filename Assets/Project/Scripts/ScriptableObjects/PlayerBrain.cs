@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Brains/Player Controlled")]
-public class PlayerControlledBrain : Brain
+public class PlayerBrain : Brain
 {
     public override void Think(Thinker thinker)
     {
