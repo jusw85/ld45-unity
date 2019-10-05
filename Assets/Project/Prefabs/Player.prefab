@@ -41,7 +41,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8803767193431570676}
   m_Layer: 0
-  m_Name: Groundcheck
+  m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,10 +99,14 @@ GameObject:
   - component: {fileID: 8803767194263608249}
   - component: {fileID: 6115735937655132892}
   - component: {fileID: 8803767194263608229}
+  - component: {fileID: 3261298225257524771}
   - component: {fileID: 8803767194263608230}
+  - component: {fileID: 2185315693873410506}
+  - component: {fileID: 607565048}
+  - component: {fileID: 607565049}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,6 +213,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &3261298225257524771
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8803767194263608250}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28b3179e25ee914f198cfe9508ee112d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &8803767194263608230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,14 +244,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691aae93ccd52a4c59b4250082d82c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosition: {fileID: 11400000, guid: 20485186450a9dc769758fdad61199f9, type: 2}
-  onPlayerMove:
-    m_PersistentCalls:
-      m_Calls: []
   moveSpeed: 2
   jumpHeight: 8
   groundCheck: {fileID: 8803767193431570676}
   groundCheckRadius: 0.1
-  whatIsGround:
+  groundLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &2185315693873410506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8803767194263608250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11b82aa145fad3818c146ee0a2935b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementController: {fileID: 8803767194263608230}
+--- !u!114 &607565048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8803767194263608250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b42273e8f038c324a089ebc670fdef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &607565049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8803767194263608250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1397f71e7aebc794bbce47116356622e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: {fileID: 11400000, guid: 20485186450a9dc769758fdad61199f9, type: 2}

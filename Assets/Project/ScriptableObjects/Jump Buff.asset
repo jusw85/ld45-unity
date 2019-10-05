@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a985840cfd96d08f3b249eef7b840b95, type: 3}
-  m_Name: New Spell
+  m_Script: {fileID: 11500000, guid: b8b099b5f8375920d8359430cc18409c, type: 3}
+  m_Name: Jump Buff
   m_EditorClassIdentifier: 
-  spellName: 
-  key: 0
-  icon: {fileID: 0}
-  cooldown: 0
-  cost: 0
-  fv: {fileID: 11400000, guid: b97a8b32db5212581abe2bf0d89eab80, type: 2}
+  value: 4

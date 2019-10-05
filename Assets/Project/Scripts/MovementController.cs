@@ -24,15 +24,26 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
-        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+//        if (Input.GetButtonDown("Jump") && isGrounded)
+//        {
+//            toJump = true;
+//        }
+    }
+
+    public void Jump()
+    {
+        if (isGrounded)
+        {
+            toJump = true;
+        }
+    }
+    
+    public void Move(Vector2 moveInput)
+    {
+        this.moveInput = moveInput;
         if (moveInput.x != 0)
         {
             SetIsFacingRight(moveInput.x > 0);
-        }
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            toJump = true;
         }
     }
 
@@ -74,4 +85,8 @@ public class MovementController : MonoBehaviour
         get { return jumpHeight; }
         set { jumpHeight = value; }
     }
+
+    public Vector2 MoveInput => moveInput;
+
+    public bool IsGrounded => isGrounded;
 }
