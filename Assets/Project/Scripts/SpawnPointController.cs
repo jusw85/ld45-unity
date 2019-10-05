@@ -29,7 +29,7 @@ public class SpawnPointController : MonoBehaviour
     private void SpawnNow()
     {
         var obj = Instantiate(spawnType, transform.position, Quaternion.identity);
-        obj.GetComponent<PlayerController>().spawnPoint = this;
+//        obj.GetComponent<PlayerController>().spawnPoint = this;
     }
 
     private IEnumerator DoAfterSeconds(float delay, Action op)

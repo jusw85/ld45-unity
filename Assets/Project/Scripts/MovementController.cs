@@ -4,15 +4,24 @@ using System.Collections.Generic;
 using MyBox;
 using ScriptableObjectArchitecture;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class MovementController : MonoBehaviour
 {
     [MustBeAssigned]
-    public Vector3Variable playerPosition;
+    [SerializeField] private Vector3Variable playerPosition;
+
+//    public UnityEvent onPlayerMove;
+    // movement type as argument
     
     [Header("Player Stuff")]
-    public float moveSpeed;
+    [SerializeField] private float moveSpeed;
+    public float MoveSpeed
+    {
+        get { return moveSpeed; }
+        set { moveSpeed = value; }
+    }
 
     public float jumpHeight;
     public Transform groundCheck;
@@ -35,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
 //        anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+//        playerMoveSpeed.Value = defaultMoveSpeed;
     }
 
     private void Start()
@@ -50,6 +60,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
         var newVelocity = rb2d.velocity;
+//        newVelocity.x = moveInput.x * playerMoveSpeed.Value;
         newVelocity.x = moveInput.x * moveSpeed;
         if (toJump)
         {
@@ -93,10 +104,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+
+    private void LateUpdate()
+    {
         playerPosition.Value = transform.position;
     }
 
-    private Vector2 oldVel;
+//    private Vector2 oldVel;
 
 //    public void Death()
 //    {
@@ -111,15 +126,15 @@ public class PlayerController : MonoBehaviour
 //        }
 //    }
 
-    public void PostDeathAnimation()
-    {
-        if (spawnPoint != null)
-        {
-            spawnPoint.Spawn();
-        }
-
-        Destroy(gameObject);
-    }
+//    public void PostDeathAnimation()
+//    {
+//        if (spawnPoint != null)
+//        {
+//            spawnPoint.Spawn();
+//        }
+//
+//        Destroy(gameObject);
+//    }
 
     public IEnumerator DoAfterSeconds(float delay, Action op)
     {
@@ -127,15 +142,15 @@ public class PlayerController : MonoBehaviour
         op();
     }
 
-    private void LateUpdate()
-    {
+//    private void LateUpdate()
+//    {
 //        if (isSpawning || isDying) return;
 //        anim.SetBool("Ground", isGrounded);
 //        anim.SetFloat("vSpeed", rb2d.velocity.y);
 //        anim.SetFloat("Speed", Mathf.Abs(moveInput.x));
-    }
+//    }
 
-    private void SetIsFacingRight(bool isFacingRight)
+    private void SetIsFacingRight(bool isFacingRight) // dont use flip, only affects spriterenderr
     {
         if (this.isFacingRight ^ isFacingRight)
         {

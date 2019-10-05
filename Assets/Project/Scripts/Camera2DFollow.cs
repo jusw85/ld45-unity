@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using ScriptableObjectArchitecture;
 
 public class Camera2DFollow : MonoBehaviour
 {
-    public Transform target;
+    public Vector3Variable targetPos;
+//    public Transform target;
     public float damping = 1;
     public float lookAheadFactor = 3;
     public float lookAheadReturnSpeed = 0.5f;
@@ -15,29 +17,30 @@ public class Camera2DFollow : MonoBehaviour
     Vector3 currentVelocity;
     Vector3 lookAheadPos;
 
-    float nextTimeToSearch = 0;
+//    float nextTimeToSearch = 0;
 
     private void Start()
     {
-        if (target != null)
-        {
-            lastTargetPosition = target.position;
-            offsetZ = (transform.position - target.position).z;
-        }
+//        if (target != null)
+//        {
+//            lastTargetPosition = target.position;
+//            offsetZ = (transform.position - target.position).z;
+//        }
+        lastTargetPosition = targetPos.Value;
+        offsetZ = (transform.position - targetPos.Value).z;
         transform.parent = null;
     }
 
     private void Update()
     {
-        if (target == null)
-        {
-            FindPlayer();
-            return;
-        }
+//        if (target == null)
+//        {
+//            FindPlayer();
+//            return;
+//        }
 
-        float xMoveDelta = (target.position - lastTargetPosition).x;
+        float xMoveDelta = (targetPos.Value - lastTargetPosition).x;
         bool updateLookAheadTarget = Mathf.Abs(xMoveDelta) > lookAheadMoveThreshold;
-
         if (updateLookAheadTarget)
         {
             lookAheadPos = lookAheadFactor * Vector3.right * Mathf.Sign(xMoveDelta);
@@ -47,29 +50,29 @@ public class Camera2DFollow : MonoBehaviour
             lookAheadPos = Vector3.MoveTowards(lookAheadPos, Vector3.zero, Time.deltaTime * lookAheadReturnSpeed);
         }
 
-        Vector3 aheadTargetPos = target.position + lookAheadPos + Vector3.forward * offsetZ;
+        Vector3 aheadTargetPos = targetPos.Value + lookAheadPos + Vector3.forward * offsetZ;
         Vector3 newPos = Vector3.SmoothDamp(transform.position, aheadTargetPos, ref currentVelocity, damping);
 
 //        newPos = new Vector3(newPos.x, Mathf.Clamp(newPos.y, yPosRestriction, Mathf.Infinity), newPos.z);
 
         transform.position = newPos;
 
-        lastTargetPosition = target.position;
+        lastTargetPosition = targetPos.Value;
     }
 
-    void FindPlayer()
-    {
-        if (nextTimeToSearch <= Time.time)
-        {
-            GameObject searchResult = GameObject.FindGameObjectWithTag("Player");
-            if (searchResult != null)
-            {
-                target = searchResult.transform;
-                lastTargetPosition = target.position;
-                offsetZ = (transform.position - target.position).z;
-            }
-
-            nextTimeToSearch = Time.time + 0.5f;
-        }
-    }
+//    void FindPlayer()
+//    {
+//        if (nextTimeToSearch <= Time.time)
+//        {
+//            GameObject searchResult = GameObject.FindGameObjectWithTag("Player");
+//            if (searchResult != null)
+//            {
+//                target = searchResult.transform;
+//                lastTargetPosition = target.position;
+//                offsetZ = (transform.position - target.position).z;
+//            }
+//
+//            nextTimeToSearch = Time.time + 0.5f;
+//        }
+//    }
 }
