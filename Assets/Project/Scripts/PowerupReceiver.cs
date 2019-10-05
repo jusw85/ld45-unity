@@ -9,7 +9,7 @@ public class PowerupReceiver : MonoBehaviour
         movementController = GetComponent<MovementController>();
     }
 
-    public void applyPowerup(PowerupType type, int value)
+    public void applyPowerup(PowerupType type, float value)
     {
         switch (type)
         {
@@ -17,6 +17,14 @@ public class PowerupReceiver : MonoBehaviour
                 if (movementController != null)
                 {
                     movementController.MoveSpeed += value;
+                }
+
+                break;
+            case PowerupType.Jump:
+
+                if (movementController != null)
+                {
+                    movementController.JumpHeight += value;
                 }
 
                 break;

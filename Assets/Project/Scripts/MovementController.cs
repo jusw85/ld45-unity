@@ -1,66 +1,46 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using MyBox;
-using ScriptableObjectArchitecture;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class MovementController : MonoBehaviour
 {
-    [MustBeAssigned]
-    [SerializeField] private Vector3Variable playerPosition;
-
 //    public UnityEvent onPlayerMove;
-    // movement type as argument
-    
-    [Header("Player Stuff")]
+    // movement type as enum
+
     [SerializeField] private float moveSpeed;
-    public float MoveSpeed
-    {
-        get { return moveSpeed; }
-        set { moveSpeed = value; }
-    }
+    [SerializeField] private float jumpHeight;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundCheckRadius;
+    [SerializeField] private LayerMask groundLayer;
 
-    public float jumpHeight;
-    public Transform groundCheck;
-    public float groundCheckRadius;
-    public LayerMask whatIsGround;
-
+    private Rigidbody2D rb2d;
     private Vector2 moveInput;
     private bool toJump;
     private bool isGrounded;
     private bool isFacingRight = true;
 
-//    private Animator anim;
-    private Rigidbody2D rb2d;
-    private AudioManager audioManager;
-
-    [NonSerialized]
-    public SpawnPointController spawnPoint;
-
     private void Awake()
     {
-//        anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
-//        playerMoveSpeed.Value = defaultMoveSpeed;
     }
 
-    private void Start()
+    private void Update()
     {
-//        audioManager = AudioManager.instance;
-//        if (audioManager == null) Debug.LogError("No audio Manager found");
-//        Camera.main.GetComponent<Camera2DFollow>().target = transform;
+        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (moveInput.x != 0)
+        {
+            SetIsFacingRight(moveInput.x > 0);
+        }
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            toJump = true;
+        }
     }
 
     private void FixedUpdate()
     {
-//        if (isSpawning || isDying) return;
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         var newVelocity = rb2d.velocity;
-//        newVelocity.x = moveInput.x * playerMoveSpeed.Value;
         newVelocity.x = moveInput.x * moveSpeed;
         if (toJump)
         {
@@ -71,86 +51,7 @@ public class MovementController : MonoBehaviour
         rb2d.velocity = newVelocity;
     }
 
-//    private bool isSpawning = true;
-//    private bool isDying = false;
-
-//    public bool IsDying
-//    {
-//        get { return isDying; }
-//        set { isDying = value; }
-//    }
-//
-//    public bool IsSpawning
-//    {
-//        get { return isSpawning; }
-//        set { isSpawning = value; }
-//    }
-
-    private void Update()
-    {
-//        if (isSpawning || isDying) return;
-
-        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-//        Debug.Log(moveInput);
-        if (moveInput.x != 0)
-            SetIsFacingRight(moveInput.x > 0);
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (isGrounded)
-            {
-                toJump = true;
-//                audioManager.PlaySound("Jump");
-            }
-        }
-
-    }
-
-    private void LateUpdate()
-    {
-        playerPosition.Value = transform.position;
-    }
-
-//    private Vector2 oldVel;
-
-//    public void Death()
-//    {
-//        if (!isDying)
-//        {
-//            isDying = true;
-//            anim.Play("Death");
-//            oldVel = rb2d.velocity;
-//            Destroy(rb2d);
-//            GetComponentInChildren<CircleCollider2D>().enabled = false;
-//            GetComponentInChildren<BoxCollider2D>().enabled = false;
-//        }
-//    }
-
-//    public void PostDeathAnimation()
-//    {
-//        if (spawnPoint != null)
-//        {
-//            spawnPoint.Spawn();
-//        }
-//
-//        Destroy(gameObject);
-//    }
-
-    public IEnumerator DoAfterSeconds(float delay, Action op)
-    {
-        yield return new WaitForSeconds(delay);
-        op();
-    }
-
-//    private void LateUpdate()
-//    {
-//        if (isSpawning || isDying) return;
-//        anim.SetBool("Ground", isGrounded);
-//        anim.SetFloat("vSpeed", rb2d.velocity.y);
-//        anim.SetFloat("Speed", Mathf.Abs(moveInput.x));
-//    }
-
-    private void SetIsFacingRight(bool isFacingRight) // dont use flip, only affects spriterenderr
+    private void SetIsFacingRight(bool isFacingRight)
     {
         if (this.isFacingRight ^ isFacingRight)
         {
@@ -160,5 +61,17 @@ public class MovementController : MonoBehaviour
         }
 
         this.isFacingRight = isFacingRight;
+    }
+
+    public float MoveSpeed
+    {
+        get { return moveSpeed; }
+        set { moveSpeed = value; }
+    }
+
+    public float JumpHeight
+    {
+        get { return jumpHeight; }
+        set { jumpHeight = value; }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class PowerupSender : MonoBehaviour
 {
     [SerializeField] private PowerupType type;
-    [SerializeField] private IntVariable value;
+    [SerializeField] private FloatReference value;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
