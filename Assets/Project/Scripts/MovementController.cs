@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-//    public UnityEvent onPlayerMove;
-    // movement type as enum
-
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpHeight;
     [SerializeField] private Transform groundCheck;
@@ -17,26 +14,51 @@ public class MovementController : MonoBehaviour
     private bool isGrounded;
     private bool isFacingRight = true;
 
+    private bool isWalkingEnabled = true;
+    private bool isJumpingEnabled = true;
+
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    public void Jump()
+    public bool Jump()
     {
+        if (!IsJumpingEnabled)
+        {
+            return false;
+        }
+
         if (isGrounded)
         {
             toJump = true;
         }
+
+        return true;
     }
-    
-    public void Move(Vector2 moveInput)
+
+    public bool Walk(Vector2 moveInput)
     {
+        if (!IsWalkingEnabled)
+        {
+            return false;
+        }
+
         this.moveInput = moveInput;
         if (moveInput.x != 0)
         {
             SetIsFacingRight(moveInput.x > 0);
         }
+
+        return true;
+    }
+
+    public void StopWalking()
+    {
+        moveInput.x = 0;
+        var newVelocity = rb2d.velocity;
+        newVelocity.x = 0;
+        rb2d.velocity = newVelocity;
     }
 
     private void FixedUpdate()
@@ -81,4 +103,18 @@ public class MovementController : MonoBehaviour
     public Vector2 MoveInput => moveInput;
 
     public bool IsGrounded => isGrounded;
+
+    public bool IsWalkingEnabled
+    {
+        get { return isWalkingEnabled; }
+        set { isWalkingEnabled = value; }
+    }
+
+    public bool IsJumpingEnabled
+    {
+        get { return isJumpingEnabled; }
+        set { isJumpingEnabled = value; }
+    }
+
+    public Vector2 Velocity => rb2d.velocity;
 }

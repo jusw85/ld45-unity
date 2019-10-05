@@ -1,27 +1,63 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
-[RequireComponent(typeof(MovementController))]
-[RequireComponent(typeof(AttackController))]
 public class PlayerAnimationController : MonoBehaviour
 {
-    private MovementController movementController;
-    private AttackController attackController;
-    private Rigidbody2D rb2d;
     private Animator animator;
+    private Action attackExitCallback;
+
+    private static Dictionary<string, int> paramIdMap;
+
+    private static readonly string[] paramIds =
+        {"AbsHSpeed", "VSpeed", "IsGrounded", "WalkSpeedMultiplier", "AttackTrigger"};
 
     private void Awake()
     {
-        movementController = GetComponent<MovementController>();
-        attackController = GetComponent<AttackController>();
-        rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        if (paramIdMap == null)
+        {
+            paramIdMap = new Dictionary<string, int>();
+            foreach (var paramId in paramIds)
+            {
+                paramIdMap.Add(paramId, Animator.StringToHash(paramId));
+            }
+        }
     }
 
-    void LateUpdate()
+    public void SetVelocity(Vector2 velocity)
     {
-        animator.SetFloat("Speed", Mathf.Abs(movementController.MoveInput.x));
-        animator.SetFloat("vSpeed", rb2d.velocity.y);
-        animator.SetBool("Ground", movementController.IsGrounded);
-        animator.SetFloat("WalkSpeedMultiplier", movementController.MoveSpeed * 0.25f);
+        animator.SetFloat(paramIdMap["AbsHSpeed"], Mathf.Abs(velocity.x));
+        animator.SetFloat(paramIdMap["VSpeed"], velocity.y);
+    }
+
+    public void SetIsGrounded(bool val)
+    {
+        animator.SetBool(paramIdMap["IsGrounded"], val);
+    }
+
+    public void SetMoveSpeed(float moveSpeed)
+    {
+        animator.SetFloat(paramIdMap["WalkSpeedMultiplier"], moveSpeed * 0.25f);
+    }
+
+    public void AnimateAttack(Action attackExitCallback)
+    {
+        animator.SetTrigger(paramIdMap["AttackTrigger"]);
+        this.attackExitCallback = attackExitCallback;
+    }
+
+    public void DoAttackExitCallback()
+    {
+        attackExitCallback?.Invoke();
+    }
+
+    private void DebugClipLength()
+    {
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        foreach (var clip in clips)
+        {
+            Debug.Log(clip.name + " " + clip.length);
+        }
     }
 }

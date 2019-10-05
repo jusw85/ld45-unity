@@ -5,17 +5,16 @@ public class PlayerBrain : Brain
 {
     public override void Think(Thinker thinker)
     {
-        MovementController movementController = thinker.GetComponent<MovementController>();
-        movementController.Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+        DrakeController drake = thinker.GetComponent<DrakeController>();
+        drake.Walk(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
         if (Input.GetButtonDown("Jump"))
         {
-            movementController.Jump();
+            drake.Jump();
         }
-        
-        AttackController attackController = thinker.GetComponent<AttackController>();
+
         if (Input.GetKeyDown(KeyCode.J))
         {
-            attackController.Attack();
+            drake.Attack();
         }
     }
 }

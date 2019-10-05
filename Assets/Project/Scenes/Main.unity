@@ -760,12 +760,35 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1133223469, guid: 6a7854697f216a13c975a7e447b2707b, type: 3}
-      propertyPath: brain
+      propertyPath: cache.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133223469, guid: 6a7854697f216a13c975a7e447b2707b, type: 3}
+      propertyPath: cache.Array.data[0].name
+      value: Drake
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133223469, guid: 6a7854697f216a13c975a7e447b2707b, type: 3}
+      propertyPath: cache.Array.data[0].obj
       value: 
-      objectReference: {fileID: 11400000, guid: a61c01c70992e9b3b9655499e80d1414,
-        type: 2}
+      objectReference: {fileID: 2185315693873410504}
+    - target: {fileID: 1133223469, guid: 6a7854697f216a13c975a7e447b2707b, type: 3}
+      propertyPath: drake
+      value: 
+      objectReference: {fileID: 2185315693873410504}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a7854697f216a13c975a7e447b2707b, type: 3}
+--- !u!114 &2185315693873410504 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8494151802207295826, guid: 6a7854697f216a13c975a7e447b2707b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2185315693873410503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca725054932562a699a205678774348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6221082633874692855
 PrefabInstance:
   m_ObjectHideFlags: 0

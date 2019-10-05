@@ -4,16 +4,27 @@ public class AttackController : MonoBehaviour
 {
     [SerializeField] private float attackCooldown;
     private bool isAttackOnCooldown;
+    private bool isAttacking;
 
-    public void Attack()
+    public bool Attack()
     {
-        if (!isAttackOnCooldown)
+        if (isAttacking || isAttackOnCooldown)
         {
-            isAttackOnCooldown = true;
-            StartCoroutine(CoroutineUtils.DelaySeconds(
-                () => { isAttackOnCooldown = false; }, attackCooldown));
+            return false;
         }
+
+        isAttacking = true;
+        isAttackOnCooldown = true;
+        StartCoroutine(CoroutineUtils.DelaySeconds(
+            () => { isAttackOnCooldown = false; }, attackCooldown));
+        return true;
     }
 
     public bool IsAttackOnCooldown => isAttackOnCooldown;
+
+    public bool IsAttacking
+    {
+        get { return isAttacking; }
+        set { isAttacking = value; }
+    }
 }
