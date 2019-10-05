@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c6449e29d8f8d858cba10f025d114b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: e7997a9e6bd9f3f15b8a14b2bb8ee209, type: 2}
+  brain: {fileID: 11400000, guid: b46778f4e0950f09b89323e952b4b8ea, type: 2}
 --- !u!1 &1179596986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1025,16 @@ PrefabInstance:
       propertyPath: playerMovementController
       value: 
       objectReference: {fileID: 2185315693873410505}
+    - target: {fileID: 8803767194263608249, guid: 6a7854697f216a13c975a7e447b2707b,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803767194263608249, guid: 6a7854697f216a13c975a7e447b2707b,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 607565048, guid: 6a7854697f216a13c975a7e447b2707b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6a7854697f216a13c975a7e447b2707b, type: 3}
