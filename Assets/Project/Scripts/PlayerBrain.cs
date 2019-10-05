@@ -11,5 +11,11 @@ public class PlayerControlledBrain : Brain
         {
             movementController.Jump();
         }
+        
+        AttackController attackController = thinker.GetComponent<AttackController>();
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            attackController.Attack();
+        }
     }
 }

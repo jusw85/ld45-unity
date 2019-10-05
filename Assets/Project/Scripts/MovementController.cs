@@ -22,14 +22,6 @@ public class MovementController : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-//        if (Input.GetButtonDown("Jump") && isGrounded)
-//        {
-//            toJump = true;
-//        }
-    }
-
     public void Jump()
     {
         if (isGrounded)
