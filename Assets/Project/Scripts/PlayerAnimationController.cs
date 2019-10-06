@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
+    [SerializeField] private float walkSpeedMultiplier = 0.25f;
     private Animator animator;
     private Action attackExitCallback;
 
@@ -38,7 +39,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void SetMoveSpeed(float moveSpeed)
     {
-        animator.SetFloat(paramIdMap["WalkSpeedMultiplier"], moveSpeed * 0.25f);
+        animator.SetFloat(paramIdMap["WalkSpeedMultiplier"], moveSpeed * walkSpeedMultiplier);
     }
 
     public void AnimateAttack(Action attackExitCallback)
