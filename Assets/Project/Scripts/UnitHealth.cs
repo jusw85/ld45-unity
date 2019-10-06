@@ -18,7 +18,6 @@ public class UnitHealth : MonoBehaviour
     public void Damage(float damage)
     {
         health -= damage;
-        Debug.Log(health);
         if (health <= 0)
         {
             unitDied.Invoke();
@@ -46,7 +45,10 @@ public class UnitHealth : MonoBehaviour
 
     private void LateUpdate()
     {
-        playerHealth.Value = health;
-        playerMaxHealth.Value = maxHealth;
+//        if (playerHealth.IsValueDefined && playerMaxHealth.IsValueDefined)
+//        {
+            playerHealth.Value = health;
+            playerMaxHealth.Value = maxHealth;
+//        }
     }
 }

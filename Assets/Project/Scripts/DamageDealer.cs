@@ -7,7 +7,7 @@ public class DamageDealer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        UnitHealth targetHealth = other.gameObject.GetComponent<UnitHealth>();
+        UnitHealth targetHealth = other.transform.root.GetComponentInChildren<UnitHealth>();
 
         if (targetHealth != null)
         {
