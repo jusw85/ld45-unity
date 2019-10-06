@@ -6,6 +6,9 @@ public class Thinker : MonoBehaviour
 
     private void Update()
     {
-        brain.Think(this);
+        if (brain != null)
+        {
+            brain.Think(this);   
+        }
     }
 }
