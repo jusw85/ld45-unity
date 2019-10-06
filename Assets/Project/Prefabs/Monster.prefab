@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 0
+  attackCollider: {fileID: 1345663464514166888}
 --- !u!114 &936481271986507928
 MonoBehaviour:
   m_ObjectHideFlags: 0

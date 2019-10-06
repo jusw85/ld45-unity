@@ -3,6 +3,7 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     [SerializeField] private float attackCooldown;
+    [SerializeField] private Collider2D attackCollider;
     private bool isAttackOnCooldown;
     private bool isAttacking;
 
@@ -21,6 +22,7 @@ public class AttackController : MonoBehaviour
     }
 
     public bool IsAttackOnCooldown => isAttackOnCooldown;
+    public Collider2D AttackCollider => attackCollider;
 
     public bool IsAttacking
     {
