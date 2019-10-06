@@ -4,9 +4,17 @@ public class MovementController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpHeight;
+    
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask groundLayer;
+    
+    [SerializeField] private Transform wallCheck;
+    [SerializeField] private float wallCheckRadius;
+    [SerializeField] private LayerMask wallLayer;
+    
+    [SerializeField] private Transform edgeCheck;
+    [SerializeField] private float edgeCheckRadius;
 
     private Rigidbody2D rb2d;
     private Vector2 moveInput;
@@ -61,6 +69,16 @@ public class MovementController : MonoBehaviour
         rb2d.velocity = newVelocity;
     }
 
+    public bool IsAtWall()
+    {
+        return Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, wallLayer);
+    }
+    
+    public bool IsAtEdge()
+    {
+        return !Physics2D.OverlapCircle(edgeCheck.position, edgeCheckRadius, groundLayer);
+    }
+
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -88,6 +106,11 @@ public class MovementController : MonoBehaviour
         this.isFacingRight = isFacingRight;
     }
 
+    public bool IsFacingRight => isFacingRight;
+    public Vector2 MoveInput => moveInput;
+    public bool IsGrounded => isGrounded;
+    public Vector2 Velocity => rb2d.velocity;
+
     public float MoveSpeed
     {
         get { return moveSpeed; }
@@ -100,10 +123,6 @@ public class MovementController : MonoBehaviour
         set { jumpHeight = value; }
     }
 
-    public Vector2 MoveInput => moveInput;
-
-    public bool IsGrounded => isGrounded;
-
     public bool IsWalkingEnabled
     {
         get { return isWalkingEnabled; }
@@ -115,6 +134,4 @@ public class MovementController : MonoBehaviour
         get { return isJumpingEnabled; }
         set { isJumpingEnabled = value; }
     }
-
-    public Vector2 Velocity => rb2d.velocity;
 }
