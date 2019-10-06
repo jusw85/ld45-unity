@@ -7,7 +7,7 @@ public class JumpBuff : Powerup
 
     public override void Apply(GameObject receiver)
     {
-        var playerMovementController = receiver.GetComponent<MovementController>();
+        var playerMovementController = receiver.transform.root.GetComponentInChildren<MovementController>();
         if (playerMovementController != null)
         {
             playerMovementController.JumpHeight += value;
