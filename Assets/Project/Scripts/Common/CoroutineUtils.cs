@@ -38,6 +38,16 @@ public static class CoroutineUtils
         yield return new WaitForSeconds(time);
     }
 
+    public static IEnumerator Repeat(Action action, float delay, float interval)
+    {
+        yield return new WaitForSeconds(delay);
+        while (true)
+        {
+            action();
+            yield return new WaitForSeconds(interval);
+        }
+    }
+    
     public static IEnumerator Do(Action action)
     {
         action();

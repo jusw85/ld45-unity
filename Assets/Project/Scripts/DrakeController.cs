@@ -49,4 +49,9 @@ public class DrakeController : MonoBehaviour
             });
         }
     }
+
+    public void KillMe()
+    {
+        Destroy(gameObject);
+    }
 }
