@@ -18,10 +18,10 @@ public class UnitHealth : MonoBehaviour
     public void Damage(float damage)
     {
         health -= damage;
+        unitDamaged.Invoke();
         if (health <= 0)
         {
             unitDied.Invoke();
-            unitDamaged.Invoke();
         }
     }
 
