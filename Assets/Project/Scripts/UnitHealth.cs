@@ -21,6 +21,10 @@ public class UnitHealth : MonoBehaviour
         unitDamaged.Invoke();
         if (health <= 0)
         {
+            // TODO: FIX
+            playerHealth.Value = health;
+            playerMaxHealth.Value = maxHealth;
+
             unitDied.Invoke();
         }
     }
@@ -47,8 +51,8 @@ public class UnitHealth : MonoBehaviour
     {
 //        if (playerHealth.IsValueDefined && playerMaxHealth.IsValueDefined)
 //        {
-            playerHealth.Value = health;
-            playerMaxHealth.Value = maxHealth;
+        playerHealth.Value = health;
+        playerMaxHealth.Value = maxHealth;
 //        }
     }
 }
