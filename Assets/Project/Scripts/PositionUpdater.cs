@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PositionUpdater : MonoBehaviour
 {
-    [MustBeAssigned] [SerializeField] private Vector3Variable playerPosition;
+    [MustBeAssigned] [SerializeField] private Vector3Variable position;
 
     private void LateUpdate()
     {
-        playerPosition.Value = transform.position;
+        position.Value = transform.position;
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Brains/Patroller")]
 public class PatrollerBrain : Brain
 {
-//    [SerializeField] private float punchInterval = 4;
+    [SerializeField] private Collider2DVariable target;
 
 //    [SerializeField] [TextArea] private string developerDescription =
 //        "Settings:\n" +
@@ -13,6 +13,7 @@ public class PatrollerBrain : Brain
     {
         thinker.Remember("drake", thinker.GetComponent<DrakeController>());
         thinker.Remember("movement", thinker.GetComponent<MovementController>());
+        thinker.Remember("attack", thinker.GetComponent<AttackController>());
         thinker.Remember("moveInput", Vector2.zero);
     }
 
@@ -20,21 +21,29 @@ public class PatrollerBrain : Brain
     {
         DrakeController drake = thinker.Remember<DrakeController>("drake");
         MovementController mc = thinker.Remember<MovementController>("movement");
+        AttackController at = thinker.Remember<AttackController>("attack");
         Vector2 moveInput = thinker.Remember<Vector2>("moveInput");
 
-        if (mc.IsGrounded)
+        if (!mc.IsGrounded)
         {
-            if (moveInput.sqrMagnitude <= 0)
-            {
-                moveInput = new Vector2(1, 0);
-            }
-            else if (mc.IsAtWall() || mc.IsAtEdge())
-            {
-                moveInput.x *= -1;
-            }
+            return;
+        }
 
-            thinker.Remember("moveInput", moveInput);
-            drake.Walk(moveInput);
+        if (moveInput.sqrMagnitude <= 0)
+        {
+            moveInput = new Vector2(1, 0);
+        }
+        else if (mc.IsAtWall() || mc.IsAtEdge())
+        {
+            moveInput.x *= -1;
+        }
+
+        thinker.Remember("moveInput", moveInput);
+        drake.Walk(moveInput);
+
+        if (at.AttackCollider.bounds.Intersects(target.Value.bounds))
+        {
+            drake.Attack();
         }
     }
 }

@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 7241382025719788189}
   - component: {fileID: 7241382025719788190}
   - component: {fileID: 6937462187480535370}
+  - component: {fileID: 1991580692}
   m_Layer: 9
   m_Name: HitBox
   m_TagString: Player
@@ -376,6 +377,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1991580692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241382025719788188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95218633591ff2590b864e8b869e7382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  c2D: {fileID: 11400000, guid: 8407a16e8ed478f9d8ef14c9f4b6c8e2, type: 2}
 --- !u!1 &8803767193431570677
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691aae93ccd52a4c59b4250082d82c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4
   jumpHeight: 8
   groundCheck: {fileID: 8803767193431570676}
   groundCheckRadius: 0.1
@@ -609,6 +623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 0
+  attackCollider: {fileID: 1366311226}
 --- !u!114 &2185315693873410506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,7 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1397f71e7aebc794bbce47116356622e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosition: {fileID: 11400000, guid: 20485186450a9dc769758fdad61199f9, type: 2}
+  position: {fileID: 11400000, guid: 20485186450a9dc769758fdad61199f9, type: 2}
 --- !u!114 &1133223469
 MonoBehaviour:
   m_ObjectHideFlags: 0
