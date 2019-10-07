@@ -30,7 +30,7 @@ public class AudioPlayer : MonoBehaviour
 
     private float VolumeToDecibel(float linearVolume)
     {
-        return Mathf.Log10(Mathf.Clamp(bgmVolume, 0.001f, 1.0f)) * 20;
+        return Mathf.Log10(Mathf.Clamp(linearVolume, 0.001f, 1.0f)) * 20;
     }
 
     public void PlayHit()
