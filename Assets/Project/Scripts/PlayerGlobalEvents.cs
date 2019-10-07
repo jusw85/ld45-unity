@@ -7,6 +7,7 @@ public class PlayerGlobalEvents : MonoBehaviour
 {
     [SerializeField] private GameEvent playerDealtDamage;
     [SerializeField] private GameEvent enemyDie;
+    [SerializeField] private GameEvent cameraShake;
 
     public void RaisePlayerDealtDamage()
     {
@@ -16,5 +17,10 @@ public class PlayerGlobalEvents : MonoBehaviour
     public void RaiseEnemyDie()
     {
         enemyDie.Raise();
+    }
+    
+    public void CameraShake()
+    {
+        cameraShake.Raise();
     }
 }
