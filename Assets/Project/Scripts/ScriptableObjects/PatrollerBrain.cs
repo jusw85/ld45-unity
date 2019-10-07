@@ -41,7 +41,7 @@ public class PatrollerBrain : Brain
         thinker.Remember("moveInput", moveInput);
         drake.Walk(moveInput);
 
-        if (at.AttackCollider.bounds.Intersects(target.Value.bounds))
+        if (target.Value != null && at.AttackCollider.bounds.Intersects(target.Value.bounds))
         {
             drake.Attack();
         }
