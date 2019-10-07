@@ -9,6 +9,7 @@ public class AudioPlayer : MonoBehaviour
     
     [SerializeField] private AudioClip hitSfx;
     [SerializeField] private AudioClip enemyDieSfx;
+    [SerializeField] private AudioClip pickupBuff;
 
     private AudioSource source1;
     private AudioSource source2;
@@ -41,5 +42,10 @@ public class AudioPlayer : MonoBehaviour
     public void PlayEnemyDie()
     {
         source2.PlayOneShot(enemyDieSfx);
+    }
+    
+    public void PlayPickup()
+    {
+        source2.PlayOneShot(pickupBuff);
     }
 }

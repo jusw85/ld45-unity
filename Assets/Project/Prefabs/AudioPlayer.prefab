@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 108892576220734372}
   - component: {fileID: 108892576220734374}
   - component: {fileID: 108892576220734369}
+  - component: {fileID: 791123699}
   m_Layer: 0
   m_Name: AudioPlayer
   m_TagString: Untagged
@@ -242,9 +243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgm: {fileID: 8300000, guid: 27a0a8491c6dd7b4da5464e2a2126be7, type: 3}
-  bgmVolume: 0.481
+  bgmVolume: 0.001
   hitSfx: {fileID: 8300000, guid: 3880ee70f283df9d0a2446b772e1a0ec, type: 3}
   enemyDieSfx: {fileID: 8300000, guid: 120ac4c4997a11909ad8c8b5327e2bab, type: 3}
+  pickupBuff: {fileID: 8300000, guid: 7ef0438384afc1a6b9808aa9ae4b12c3, type: 3}
 --- !u!114 &108892576220734374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +306,40 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 108892576220734372}
         m_MethodName: PlayEnemyDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &791123699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108892576220734395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 303fb69452a1f69059a90ba72eb9a3ad,
+    type: 2}
+  _event: {fileID: 11400000, guid: 303fb69452a1f69059a90ba72eb9a3ad, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 108892576220734372}
+        m_MethodName: PlayPickup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
