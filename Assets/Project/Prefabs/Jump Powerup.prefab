@@ -121,3 +121,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerup: {fileID: 11400000, guid: 7c63054206c50108b8debeacc655e46e, type: 2}
+  powerupEvent: {fileID: 11400000, guid: 303fb69452a1f69059a90ba72eb9a3ad, type: 2}
