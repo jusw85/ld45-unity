@@ -7,7 +7,7 @@ public static class CoroutineUtils
     /**
      * Usage: StartCoroutine(CoroutineUtils.Chain(...))
      * For example:
-     *     StartCoroutine(CoroutineUtils.Chain(
+     *     StartCoroutine(CoroutineUtils.Chain(this,
      *         CoroutineUtils.Do(() => Debug.Log("A")),
      *         CoroutineUtils.WaitForSeconds(2),
      *         CoroutineUtils.Do(() => Debug.Log("B"))));
