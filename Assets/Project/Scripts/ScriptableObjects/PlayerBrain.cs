@@ -6,8 +6,9 @@ public class PlayerBrain : Brain
     public override void Think(Thinker thinker)
     {
         DrakeController drake = thinker.GetComponent<DrakeController>();
-        drake.Walk(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
-        if (Input.GetButtonDown("Jump"))
+        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        drake.Walk(moveInput);
+        if (Input.GetButtonDown("Jump") || moveInput.y > 0)
         {
             drake.Jump();
         }

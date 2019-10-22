@@ -1,4 +1,5 @@
 ﻿using System;
+using Jusw85.Common;
 using UnityEngine;
 
 // TODO: find some way to hook callbacks on the spawned object
@@ -39,7 +40,7 @@ public class ObjectSpawner : MonoBehaviour
     }
 
     /**
-     * Waits 1 frame
+     * Waits 1 frame if initialSpawnDelay=0
      */
     public void DoSpawnOneShot()
     {

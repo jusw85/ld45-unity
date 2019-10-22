@@ -1,3 +1,4 @@
+using Jusw85.Common;
 using UnityEngine;
 
 public class AttackController : MonoBehaviour

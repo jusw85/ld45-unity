@@ -4,30 +4,34 @@ using UnityEngine.Tilemaps;
 
 //[CustomTiledImporter]
 //public class TiledImporter : ICustomTiledImporter
-public class TiledImporter : CustomTmxImporter
+
+namespace Jusw85.ST2U
 {
-    private const float SkinWidth = 0.0f;
-//
-    public void CustomizePrefab(GameObject prefab)
+    public class CustomST2UImporter : CustomTmxImporter
     {
+        private const float SkinWidth = 0.0f;
+
+//
+        public void CustomizePrefab(GameObject prefab)
+        {
 //        FixRendererMaterial(prefab);
 //        AddSpikeController(prefab);
-    }
-
-    private void DisableTilemapRenderer(Transform t)
-    {
-        if (t != null)
-        {
-            t.GetComponent<TilemapRenderer>().enabled = false;
         }
-    }
 
-    public override void TmxAssetImported(TmxAssetImportedArgs args)
-    {
-        Debug.Log("Applying import settings");
-        var a = args.ImportedSuperMap;
-        DisableTilemapRenderer(a.transform.Find("Grid/Solid"));
-        DisableTilemapRenderer(a.transform.Find("Grid/Spikes"));
+        private void DisableTilemapRenderer(Transform t)
+        {
+            if (t != null)
+            {
+                t.GetComponent<TilemapRenderer>().enabled = false;
+            }
+        }
+
+        public override void TmxAssetImported(TmxAssetImportedArgs args)
+        {
+            Debug.Log("Applying import settings");
+            var a = args.ImportedSuperMap;
+            DisableTilemapRenderer(a.transform.Find("Grid/Solid"));
+            DisableTilemapRenderer(a.transform.Find("Grid/Spikes"));
 
 //        Transform transform = a.transform.Find("Grid/Spikes/Collision_Default");
 //        if (transform != null)
@@ -57,7 +61,7 @@ public class TiledImporter : CustomTmxImporter
 //                polygonCollider.SetPath(0, points);
 //            }
 //        }
-    }
+        }
 
 //    private void FixRendererMaterial(GameObject prefab)
 //    {
@@ -162,4 +166,5 @@ public class TiledImporter : CustomTmxImporter
 //            Debug.Log(kvp.Key + ": " + kvp.Value);
 //        }
 //    }
+    }
 }
