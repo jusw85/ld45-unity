@@ -1,4 +1,4 @@
-# Ludum Dare 45 - Theme: 
+# Ludum Dare 45 - Theme: Start with nothing 
 Ludum Dare 45 in Unity
 
 Title: Drake Hits Rock Bottom
