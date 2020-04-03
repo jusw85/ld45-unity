@@ -11,7 +11,10 @@ TrueTypeFontImporter:
   fontName: Amaranth
   fontNames:
   - Amaranth
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b4e86052de8904394807b3f10e18a9f6, type: 3}
+  - {fileID: 12800000, guid: 64bd3e45f7a714f16b3c213f55f17fea, type: 3}
+  - {fileID: 12800000, guid: bb145366ce7024469a5758b08d31802c, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

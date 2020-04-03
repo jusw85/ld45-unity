@@ -9,12 +9,13 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 1fa25d03934ea624a82bf2fcee6f0873, type: 3}
   missingFiles: []
-  errors: []
+  errors:
+  - Custom Importer error. Class type 'TiledImporter' is missing.
   warnings: []
   missingSortingLayers: []
   missingLayers: []
   missingTags: []
-  importerVersion: 17
+  importerVersion: 18
   pixelsPerUnit: 64
   edgesPerEllipse: 32
   numberOfObjectsImported: 3
